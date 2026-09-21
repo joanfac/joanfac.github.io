@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="自拍网专注于分享高清自拍、街拍摄影技巧与后期教程，提供各类自拍风格指南、构图技巧及器材推荐，是摄影爱好者的实用学习平台。">
+    <meta name="keywords" content="自拍网,自拍技巧,摄影构图,街拍,自拍教程,人像摄影">
+    <title>自拍网-高清自拍风格指南与摄影技巧分享</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff4757;
+            --secondary-color: #2f3542;
+            --accent-color: #ffa502;
+            --bg-color: #f1f2f6;
+            --card-bg: #ffffff;
+            --text-main: #2f3542;
+            --text-light: #747d8c;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+            --border-radius: 12px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #dfe4ea;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.6rem;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .view-all {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            color: var(--secondary-color);
+            position: relative;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--bg-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 0.9rem;
+            width: 150px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Grid Layouts */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+
+        .card-content {
+            padding: 1.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-category {
+            font-size: 0.75rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .card-excerpt {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            border-top: 1px solid #f1f2f6;
+            padding-top: 0.8rem;
+        }
+
+        .author-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        /* Special Featured Card */
+        .featured-card {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .featured-card .card-image {
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .featured-card .card-content {
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            color: white;
+        }
+
+        .featured-card .card-title {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .featured-card .card-excerpt {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .featured-card .card-meta {
+            border-top: 1px solid rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Tips Section */
+        .tips-section {
+            background-color: #fff;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        .tip-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            border-bottom: 1px solid #f1f2f6;
+            align-items: flex-start;
+        }
+
+        .tip-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #ffeaa7;
+            color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .tip-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tip-content p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 3rem 0;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .faq-question {
+            padding: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.2rem;
+            background-color: #fafafa;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .faq-item.active .faq-answer {
+            padding-bottom: 1.2rem;
+            max-height: 200px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #dfe4ea;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            color: #747d8c;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem 0;
+                gap: 1rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .grid-4, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-card {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .featured-card .card-image {
+                min-height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">自拍<span>网</span></a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">风格教程</a></li>
+                    <li><a href="#">器材评测</a></li>
+                    <li><a href="#">热门图集</a></li>
+                    <li><a href="#">社区交流</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索技巧或风格...">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>发现独一无二的自己</h1>
+                <p>自拍网提供从构图技巧到后期修图的全方位指南，帮助您拍出专业级的高清自拍。</p>
+                <div class="hero-tags">
+                    <span class="tag">#清新日系</span>
+                    <span class="tag">#复古胶片</span>
+                    <span class="tag">#职场通勤</span>
+                    <span class="tag">#旅行打卡</span>
+                    <span class="tag">#暗黑风格</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Latest Articles Grid -->
+            <section class="articles-section">
+                <div class="section-header">
+                    <h2 class="section-title">最新摄影技巧</h2>
+                    <a href="#" class="view-all">查看全部 &rarr;</a>
+                </div>
+                
+                <div class="grid-3">
+                    <!-- Featured Article -->
+                    <article class="card featured-card">
+                        <img src="https://picsum.photos/seed/portrait1/800/800.jpg" alt="自然光人像摄影" class="card-image">
+                        <div class="card-content">
+                            <span class="card-category">必读教程</span>
+                            <h3 class="card-title">零基础也能学会：利用自然光拍出高级感自拍</h3>
+                            <p class="card-excerpt">掌握窗边光、逆光和侧光的运用，无需昂贵设备，也能拍出电影感的皮肤质感。</p>
+                            <div class="card-meta">
+                                <span>2023-10-24</span>
+                                <span>阅读量 12.5k</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Regular Card 1 -->
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/makeup/400/300.jpg" alt="妆容教程" class="card-image">
+                        <div class="card-content">
+                            <span class="card-category">妆容搭配</span>
+                            <h3 class="card-title">适合自拍的高清底妆打造指南</h3>
+                            <p class="card-excerpt">如何选择粉底色号，以及定妆喷雾的正确使用方法，告别脱妆尴尬。</p>
+                            <div class="card-meta">
+                                <span>2023-10-22</span>
+                                <span>阅读量 8.2k</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Regular Card 2 -->
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/street/400/300.jpg" alt="街拍姿势" class="card-image">
+                        <div class="card-content">
+                            <span class="card-category">姿势指导</span>
+                            <h3 class="card-title">告别剪刀手：10个自然随性的街头自拍姿势</h3>
+                            <p class="card-excerpt">学会利用身边的道具和建筑线条，让照片看起来更加生动有趣。</p>
+                            <div class="card-meta">
+                                <span>2023-10-20</span>
+                                <span>阅读量 6.1k</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Regular Card 3 -->
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/phone/400/300.jpg" alt="手机摄影" class="card-image">
+                        <div class="card-content">
+                            <span class="card-category">器材指南</span>
+                            <h3 class="card-title">手机前置摄像头优化设置全攻略</h3>
+                            <p class="card-excerpt">调整分辨率、HDR模式和网格线，释放手机摄影的最大潜力。</p>
+                            <div class="card-meta">
+                                <span>2023-10-18</span>
+                                <span>阅读量 9.4k</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Tips Section -->
+            <section class="tips-section">
+                <div class="section-header">
+                    <h2 class="section-title">新手避坑指南</h2>
+                </div>
+                <div class="grid-4">
+                    <div class="tip-item">
+                        <div class="tip-icon">1</div>
+                        <div class="tip-content">
+                            <h3>光线是灵魂</h3>
+                            <p>避免正午顶光，选择上午10点前或下午3点后的柔和光线，能有效减少面部阴影。</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-icon">2</div>
+                        <div class="tip-content">
+                            <h3>构图法则</h3>
+                            <p>尝试三分法构图，不要把眼睛放在画面正中央，适当留白能让照片更有呼吸感。</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-icon">3</div>
+                        <div class="tip-content">
+                            <h3>后期适度</h3>
+                            <p>磨皮和美白要适度，保留皮肤的纹理感，过度的“一键美颜”会显得不自然。</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-icon">4</div>
+                        <div class="tip-content">
+                            <h3>多角度尝试</h3>
+                            <p>不要只拍正面，尝试45度侧脸、仰拍或俯拍，不同的角度能展现不同的气质。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <div class="section-header">
+                    <h2 class="section-title">常见问题</h2>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">自拍时如何解决脸部光斑问题？</div>
+                        <div class="faq-answer">可以使用遮光板、白纸或反光板将光线柔化并打在脸上，或者调整拍摄角度避开强光源直射镜头。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">手机自拍怎么拍出大长腿？</div>
+                        <div class="faq-answer">将手机放低，镜头靠近地面，拍摄时稍微仰拍身体，并让模特稍微侧身，利用透视原理拉长腿部线条。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">自拍网有哪些推荐的拍摄风格？</div>
+                        <div class="faq-answer">目前热门的风格包括胶片复古风、日系清新风、极简黑白风和莫兰迪色系风，您可以根据喜好尝试。</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于自拍网</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.6;">自拍网致力于为摄影爱好者提供高质量的教程和灵感，记录生活中的每一个精彩瞬间。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>热门分类</h4>
+                    <ul>
+                        <li><a href="#">人像构图</a></li>
+                        <li><a href="#">光影技巧</a></li>
+                        <li><a href="#">滤镜调色</a></li>
+                        <li><a href="#">穿搭指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>支持服务</h4>
+                    <ul>
+                        <li><a href="#">投稿指南</a></li>
+                        <li><a href="#">联系合作</a></li>
+                        <li><a href="#">免责声明</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>订阅更新</h4>
+                    <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">获取最新拍摄技巧和风格推荐。</p>
+                    <input type="email" placeholder="输入您的邮箱" style="padding: 0.5rem; border-radius: 4px; border: none; width: 100%;">
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 自拍网 版权所有. 本站内容仅供学习与交流，请勿用于商业用途。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Accordion Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
