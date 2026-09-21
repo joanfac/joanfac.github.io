@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="股乐宝官方平台 - 提供专业股票量化策略、智能选股工具及投资辅助服务，帮助投资者提升决策效率，降低投资风险。">
+    <meta name="keywords" content="股乐宝,股票量化,智能选股,投资策略,股票分析">
+    <title>股乐宝 - 专业股票量化与智能投资决策平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #3b82f6;
+            --accent-hover: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            border: 1px solid var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1e293b 100%);
+            color: white;
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-item h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .stat-item p {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            margin: 0;
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 1.875rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            background-color: #eff6ff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Dashboard Preview */
+        .dashboard-preview {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin-bottom: 4rem;
+        }
+
+        .preview-header {
+            background: #f1f5f9;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .preview-tabs span {
+            padding: 0.25rem 0.75rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .preview-tabs span.active {
+            background: white;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .preview-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .data-label {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .data-value {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .trend-up { color: var(--success-color); }
+        .trend-down { color: #ef4444; }
+
+        /* Strategy List */
+        .strategy-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .strategy-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 1.25rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .strategy-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .strategy-info span {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .strategy-tag {
+            background: #eff6ff;
+            color: var(--accent-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+        }
+
+        .faq-answer {
+            padding: 0 1.25rem 1.25rem;
+            color: var(--text-secondary);
+            display: none;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #cbd5e1;
+            padding: 4rem 1.5rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            max-width: 300px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col ul li a {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .footer-col ul li a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.875rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .header-actions .btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .strategy-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .strategy-item .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <span>◆</span> 股乐宝
+            </a>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#features">核心功能</a>
+                <a href="#strategies">智能策略</a>
+                <a href="#pricing">会员服务</a>
+                <a href="#help">帮助中心</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">登录</a>
+                <a href="#" class="btn btn-primary">免费试用</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>用数据驱动投资决策，让炒股更简单</h1>
+                <p>股乐宝基于海量历史数据与AI算法，为您提供精准的股票量化分析、实时风控预警及个性化投资策略，助您把握市场先机。</p>
+                <div style="display: flex; gap: 1rem; justify-content: center;">
+                    <a href="#" class="btn btn-primary" style="background: white; color: var(--primary-color);">立即开始分析</a>
+                    <a href="#features" class="btn btn-outline" style="border-color: rgba(255,255,255,0.3); color: white;">了解更多</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>10W+</h3>
+                        <p>注册用户</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>量化策略</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>98%</h3>
+                        <p>策略准确率</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="container">
+            <div class="section-header">
+                <h2>全方位投资辅助工具</h2>
+                <p>告别盲目跟风，构建属于您的投资体系</p>
+            </div>
+            <div class="features-grid">
+                <article class="feature-card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <h3>智能选股</h3>
+                    <p>输入您的投资偏好，系统自动筛选符合技术面、基本面及情绪指标的优质标的，降低选股难度。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                    <h3>趋势预警</h3>
+                    <p>实时监控股价波动与成交量变化，一旦触发关键买卖信号，第一时间通过APP推送通知。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    </div>
+                    <h3>风险控制</h3>
+                    <p>基于风险评估模型，实时计算持仓风险敞口，辅助您设置止损止盈点位，保护本金安全。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    </div>
+                    <h3>策略回测</h3>
+                    <p>将您的交易策略代入历史数据运行，查看在过往不同市场环境下的表现，优化交易逻辑。</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Dashboard Preview -->
+        <section class="container">
+            <div class="section-header">
+                <h2>实时数据看板</h2>
+                <p>清晰直观的界面设计，让复杂数据一目了然</p>
+            </div>
+            <div class="dashboard-preview">
+                <div class="preview-header">
+                    <span style="font-weight: 600; color: var(--text-secondary);">今日市场概览</span>
+                    <div class="preview-tabs">
+                        <span class="active">A股</span>
+                        <span>港股</span>
+                        <span>美股</span>
+                    </div>
+                </div>
+                <div class="preview-body">
+                    <div class="data-row">
+                        <div class="data-label">上证指数</div>
+                        <div class="data-value trend-up">3,058.24 <span style="font-size: 0.9rem; font-weight: 400;">+0.85%</span></div>
+                    </div>
+                    <div class="data-row">
+                        <div class="data-label">深证成指</div>
+                        <div class="data-value trend-down">9,875.12 <span style="font-size: 0.9rem; font-weight: 400;">-0.32%</span></div>
+                    </div>
+                    <div class="data-row">
+                        <div class="data-label">创业板指</div>
+                        <div class="data-value trend-up">1,956.88 <span style="font-size: 0.9rem; font-weight: 400;">+1.12%</span></div>
+                    </div>
+                    <div class="data-row">
+                        <div class="data-label">两市成交额</div>
+                        <div class="data-value">8,420.5 亿</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategies Section -->
+        <section id="strategies" class="container">
+            <div class="section-header">
+                <h2>热门量化策略</h2>
+                <p>精选适合不同风险偏好的投资模型</p>
+            </div>
+            <div class="strategy-list">
+                <div class="strategy-item">
+                    <div class="strategy-info">
+                        <h4>稳健价值成长策略</h4>
+                        <span>适用于：中长期持有 | 风险等级：中低</span>
+                    </div>
+                    <span class="strategy-tag">近一年 +18.5%</span>
+                    <button class="btn btn-outline">查看详情</button>
+                </div>
+                <div class="strategy-item">
+                    <div class="strategy-info">
+                        <h4>短线趋势跟踪策略</h4>
+                        <span>适用于：日内/超短线交易 | 风险等级：中高</span>
+                    </div>
+                    <span class="strategy-tag">近一月 +5.2%</span>
+                    <button class="btn btn-outline">查看详情</button>
+                </div>
+                <div class="strategy-item">
+                    <div class="strategy-info">
+                        <h4>低波动红利套利策略</h4>
+                        <span>适用于：资产配置 | 风险等级：低</span>
+                    </div>
+                    <span class="strategy-tag">近一年 +6.8%</span>
+                    <button class="btn btn-outline">查看详情</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="help" class="container faq-section">
+            <div class="section-header">
+                <h2>常见问题解答</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">股乐宝的数据来源是什么？ <span>+</span></div>
+                    <div class="faq-answer">股乐宝的数据主要来源于国内主流证券交易所公开数据及权威金融数据服务商，确保数据的及时性与准确性。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">新手用户如何开始使用？ <span>+</span></div>
+                    <div class="faq-answer">您可以先注册账号，选择“智能选股”功能输入您的筛选条件，或者参考“新手指南”栏目，从简单的趋势跟踪策略开始尝试。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">是否支持模拟盘交易？ <span>+</span></div>
+                    <div class="faq-answer">是的，我们提供完全免费的模拟盘环境，您可以使用虚拟资金进行策略测试，无需承担真实资金风险。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="container" style="text-align: center; margin-bottom: 4rem;">
+            <div style="background: linear-gradient(to right, var(--accent-color), var(--accent-hover)); color: white; padding: 3rem; border-radius: 12px;">
+                <h2 style="margin-bottom: 1rem;">准备好提升您的投资水平了吗？</h2>
+                <p style="margin-bottom: 2rem; opacity: 0.9;">加入股乐宝，开启数据驱动的投资之旅</p>
+                <a href="#" class="btn" style="background: white; color: var(--accent-color);">免费注册账户</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>股乐宝</h3>
+                <p>致力于为每一位投资者提供专业、客观、高效的量化分析工具。让投资决策有据可依，让财富增长更加稳健。</p>
+            </div>
+            <div class="footer-col">
+                <h4>产品功能</h4>
+                <ul>
+                    <li><a href="#">智能选股</a></li>
+                    <li><a href="#">策略回测</a></li>
+                    <li><a href="#">实时预警</a></li>
+                    <li><a href="#">数据看板</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>投资服务</h4>
+                <ul>
+                    <li><a href="#">投资教程</a></li>
+                    <li><a href="#">市场研报</a></li>
+                    <li><a href="#">社区交流</a></li>
+                    <li><a href="#">VIP会员</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>关于我们</h4>
+                <ul>
+                    <li><a href="#">公司简介</a></li>
+                    <li><a href="#">联系方式</a></li>
+                    <li><a href="#">服务条款</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 股乐宝 版权所有. 本网站内容仅供参考，不构成投资建议。</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+  </html>
