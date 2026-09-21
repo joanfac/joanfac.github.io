@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="鲁难未已 - 提供深度时事评论、国际局势分析与历史人文思考。关注当下挑战，探讨未来发展路径。">
+    <meta name="keywords" content="鲁难未已, 时事评论, 国际局势, 历史思考, 社会观察">
+    <title>鲁难未已 - 深度时事评论与历史人文思考</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-main: #2c3e50;
+            --text-secondary: #596e7f;
+            --accent-color: #c0392b;
+            --accent-hover: #a93226;
+            --card-bg: #ffffff;
+            --border-color: #e9ecef;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        nav a.active, nav a:hover {
+            color: var(--text-main);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.15);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Main Content */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 50px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 20px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .view-all {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Article List */
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .article-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .article-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .article-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-meta {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .article-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .article-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .read-more {
+            align-self: flex-start;
+            font-weight: 600;
+            color: var(--text-main);
+            border-bottom: 2px solid transparent;
+        }
+
+        .read-more:hover {
+            border-bottom-color: var(--accent-color);
+        }
+
+        /* Sidebar */
+        .sidebar-widget {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .quote-box {
+            font-style: italic;
+            color: var(--text-secondary);
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .topic-list {
+            list-style: none;
+        }
+
+        .topic-list li {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 15px;
+        }
+
+        .topic-list li:last-child {
+            border-bottom: none;
+        }
+
+        .topic-list a {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .topic-list span {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* FAQ Section */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .faq-question {
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .faq-question::before {
+            content: 'Q';
+            background: var(--accent-color);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .faq-answer {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #bdc3c7;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav {
+                display: none; /* Simplified for mobile */
+            }
+
+            .header-inner {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span>鲁</span>难未已
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">时政观察</a></li>
+                    <li><a href="#">国际局势</a></li>
+                    <li><a href="#">历史回响</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>审视变局，探索前行之路</h1>
+                <p>在动荡与不确定中寻找理性的声音。我们致力于深度解析当下面临的挑战，梳理历史脉络，为理解复杂世界提供参考。</p>
+                <div class="hero-tags">
+                    <span class="tag">地缘政治</span>
+                    <span class="tag">经济转型</span>
+                    <span class="tag">社会思潮</span>
+                    <span class="tag">历史反思</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="container main-layout">
+            <!-- Main Content Area -->
+            <div class="content-area">
+                
+                <!-- Latest Articles -->
+                <section>
+                    <div class="section-header">
+                        <h2 class="section-title">最新深度文章</h2>
+                        <a href="#" class="view-all">查看全部 &rarr;</a>
+                    </div>
+
+                    <div class="article-list">
+                        <!-- Article 1 -->
+                        <article class="article-card">
+                            <img src="https://picsum.photos/seed/politics1/800/400" alt="国际局势封面图" class="article-img">
+                            <div class="article-content">
+                                <div class="article-meta">
+                                    <span>时政观察</span>
+                                    <span>•</span>
+                                    <span>2023年10月24日</span>
+                                </div>
+                                <h3 class="article-title"><a href="#">多重危机下的全球治理：挑战与重构</a></h3>
+                                <p class="article-excerpt">当前世界正处于地缘政治紧张、气候变化加剧以及经济衰退风险上升的复杂周期。本文将分析全球治理体系面临的瓶颈，并探讨在多极化趋势下，国际协作机制可能发生的结构性变化。</p>
+                                <a href="#" class="read-more">阅读全文</a>
+                            </div>
+                        </article>
+
+                        <!-- Article 2 -->
+                        <article class="article-card">
+                            <img src="https://picsum.photos/seed/history1/800/400" alt="历史封面图" class="article-img">
+                            <div class="article-content">
+                                <div class="article-meta">
+                                    <span>历史回响</span>
+                                    <span>•</span>
+                                    <span>2023年10月22日</span>
+                                </div>
+                                <h3 class="article-title"><a href="#">“鲁难未已”：从历史文献看当代的延续与变奏</a></h3>
+                                <p class="article-excerpt">“鲁难未已”这一古老命题在当下有何新的注脚？通过梳理历史文献中对危机与困境的记载，我们可以发现，人类社会在处理外部压力与内部转型时，始终面临着相似的伦理困境与治理难题。</p>
+                                <a href="#" class="read-more">阅读全文</a>
+                            </div>
+                        </article>
+
+                        <!-- Article 3 -->
+                        <article class="article-card">
+                            <img src="https://picsum.photos/seed/society1/800/400" alt="社会封面图" class="article-img">
+                            <div class="article-content">
+                                <div class="article-meta">
+                                    <span>社会思潮</span>
+                                    <span>•</span>
+                                    <span>2023年10月20日</span>
+                                </div>
+                                <h3 class="article-title"><a href="#">技术奇点临近：人工智能时代的伦理审视</a></h3>
+                                <p class="article-excerpt">随着生成式人工智能的爆发式增长，技术不再仅仅是工具，而是开始重塑人类的认知边界。如何在技术狂奔中保持理性的方向盘，是“鲁难未已”时代我们必须回答的核心问题之一。</p>
+                                <a href="#" class="read-more">阅读全文</a>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Featured Topic -->
+                <section>
+                    <div class="section-header">
+                        <h2 class="section-title">专题策划</h2>
+                    </div>
+                    <div class="article-card" style="flex-direction: row; align-items: center;">
+                        <img src="https://picsum.photos/seed/featured/400/300" alt="专题封面" style="width: 300px; height: 200px; object-fit: cover;">
+                        <div class="article-content" style="padding: 20px;">
+                            <span class="tag" style="background: #e8f4f8; color: #3498db; margin-bottom: 10px;">深度专题</span>
+                            <h3 class="article-title" style="font-size: 1.2rem;">动荡时代的生存智慧</h3>
+                            <p class="article-excerpt" style="font-size: 0.95rem;">从历史经验中汲取养分，在不确定性中构建个人与组织的韧性。本期专题探讨如何在危机中保持定力。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ Section -->
+                <section>
+                    <div class="section-header">
+                        <h2 class="section-title">常见问题与思考</h2>
+                    </div>
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <div class="faq-question">“鲁难未已”的具体含义是什么？</div>
+                            <div class="faq-answer">该词源于古语，意指鲁国的灾难还没有结束。在当代语境下，它通常被用来比喻一个国家或地区面临的危机尚未解除，需要持续关注与应对。</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">你们关注哪些领域？</div>
+                            <div class="faq-answer">我们主要关注地缘政治、全球宏观经济、社会思潮演变以及历史人文的跨学科研究，旨在提供多维度的分析视角。</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">如何参与讨论？</div>
+                            <div class="faq-answer">我们鼓励理性的观点交流。您可以通过网站提供的投稿通道提交您的深度稿件，或参与我们在社区板块发起的议题讨论。</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                
+                <!-- Intro Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">关于本站</h3>
+                    <div class="quote-box">
+                        “知彼知己，百战不殆；不知彼而知己，一胜一负；不知彼，不知己，每战必殆。”
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">
+                        “鲁难未已”是一个致力于提供深度、客观、理性分析的独立媒体平台。我们记录时代的变迁，探讨发展的路径。
+                    </p>
+                </div>
+
+                <!-- Trending Topics -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">热门议题</h3>
+                    <ul class="topic-list">
+                        <li>
+                            <a href="#">全球经济复苏的不确定性</a>
+                            <span>2.3万 浏览</span>
+                        </li>
+                        <li>
+                            <a href="#">能源转型中的博弈与机遇</a>
+                            <span>1.8万 浏览</span>
+                        </li>
+                        <li>
+                            <a href="#">人口结构变化带来的挑战</a>
+                            <span>1.5万 浏览</span>
+                        </li>
+                        <li>
+                            <a href="#">历史教训与现代治理</a>
+                            <span>9800 浏览</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="sidebar-widget" style="background: var(--text-main); color: white;">
+                    <h3 class="widget-title" style="color: white; border-color: rgba(255,255,255,0.2);">订阅周刊</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 15px; opacity: 0.8;">每周一发送，精选深度分析与时评。</p>
+                    <input type="email" placeholder="您的邮箱地址" style="width: 100%; padding: 10px; border-radius: 4px; border: none; margin-bottom: 10px;">
+                    <button style="width: 100%; padding: 10px; background: var(--accent-color); color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">立即订阅</button>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>鲁难未已</h3>
+                    <p style="font-size: 0.9rem; line-height: 1.6;">
+                        在动荡的时代中，我们坚持记录、分析与思考。致力于为读者提供有价值的深度内容。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h3>栏目导航</h3>
+                    <ul>
+                        <li><a href="#">时政观察</a></li>
+                        <li><a href="#">国际局势</a></li>
+                        <li><a href="#">历史回响</a></li>
+                        <li><a href="#">深度专题</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>相关资源</h3>
+                    <ul>
+                        <li><a href="#">投稿指南</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">联系方式</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 鲁难未已. 保留所有权利. 本站内容仅供学习与交流使用。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
