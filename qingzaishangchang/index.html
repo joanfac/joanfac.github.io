@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="情在商场爱在官场 - 深度解析职场情感与权力博弈，提供官场小说推荐、职场生存法则、情感关系指南及热门小说阅读资源。">
+    <meta name="keywords" content="情在商场爱在官场,官场小说,职场小说,职场情感,权力博弈,小说推荐">
+    <title>情在商场爱在官场-职场情感小说推荐与权力博弈解析</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #c0392b;
+            --bg-color: #f4f6f7;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --spacing-unit: 16px;
+            --max-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        nav a.active, nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Main Content */
+        main {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+            nav ul {
+                display: none; /* Simplified for mobile */
+            }
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        /* Article Grid */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .article-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+        }
+
+        .card-img {
+            height: 160px;
+            background-color: #eee;
+            position: relative;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-category {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--accent-color);
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .card-body {
+            padding: 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .card-excerpt {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            flex: 1;
+        }
+
+        .card-meta {
+            font-size: 0.8rem;
+            color: #999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 12px;
+            display: inline-block;
+        }
+
+        /* Sidebar */
+        .sidebar-widget {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+            color: var(--primary-color);
+        }
+
+        .ranking-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .ranking-list li:last-child {
+            border-bottom: none;
+        }
+
+        .rank-num {
+            width: 24px;
+            height: 24px;
+            background: #eee;
+            color: #666;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .ranking-list li:nth-child(1) .rank-num { background: #ffd700; color: #fff; }
+        .ranking-list li:nth-child(2) .rank-num { background: #c0c0c0; color: #fff; }
+        .ranking-list li:nth-child(3) .rank-num { background: #cd7f32; color: #fff; }
+
+        .rank-title {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 180px;
+        }
+
+        /* Featured Article */
+        .featured-article {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .featured-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 768px) {
+            .featured-content {
+                flex-direction: row;
+            }
+        }
+
+        .featured-img {
+            width: 100%;
+            height: 250px;
+            background-color: #ddd;
+        }
+
+        .featured-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-text {
+            padding: 30px;
+            flex: 1;
+        }
+
+        .featured-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .featured-text p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        /* Quote Block */
+        .quote-block {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #555;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #ecf0f1;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            color: #7f8c8d;
+        }
+
+        /* Utility */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .btn:hover {
+            background-color: #34495e;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                情在商场<span>爱在官场</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">官场小说</a></li>
+                    <li><a href="#">职场小说</a></li>
+                    <li><a href="#">深度解析</a></li>
+                    <li><a href="#">排行榜</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>情在商场爱在官场</h1>
+        <p>探索权力与利益的交汇点，解读职场情感背后的博弈与抉择。为您提供最热门的官场职场小说推荐与深度阅读指南。</p>
+        <div class="hero-tags">
+            <span class="tag">官场升迁</span>
+            <span class="tag">商战博弈</span>
+            <span class="tag">职场情感</span>
+            <span class="tag">人性剖析</span>
+        </div>
+    </div>
+
+    <main>
+        <!-- Featured Article -->
+        <section class="featured-article">
+            <div class="featured-content">
+                <div class="featured-img">
+                    <img src="https://picsum.photos/seed/office1/600/400" alt="职场博弈">
+                </div>
+                <div class="featured-text">
+                    <span style="color:var(--accent-color); font-size:0.9rem; font-weight:bold;">深度解析</span>
+                    <h2>商场与官场的双重奏：如何在利益纠葛中保持初心？</h2>
+                    <p>在“情在商场，爱在官场”的故事背景下，主角往往面临着商业利益与官场规则的双重考验。本文将深入分析这类题材中常见的权力寻租、利益交换以及情感抉择，为您解读那些隐藏在纸面之下的生存智慧。</p>
+                    <a href="#" class="read-more">阅读全文 &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Area -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">热门推荐</h2>
+                <a href="#" style="font-size:0.9rem; color:var(--accent-color);">查看更多 &rarr;</a>
+            </div>
+
+            <div class="article-grid">
+                <article class="article-card">
+                    <div class="card-img">
+                        <span class="card-category">官场</span>
+                        <img src="https://picsum.photos/seed/politics/400/300" alt="官场小说封面">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">步步高升：从基层科员到厅局长的奋斗史</h3>
+                        <p class="card-excerpt">讲述一名普通公务员如何在复杂的官场环境中，凭借智慧与手段，一步步走上领导岗位，同时处理与商业伙伴之间微妙情感的故事。</p>
+                        <div class="card-meta">
+                            <span>10万+ 阅读</span>
+                            <span>2小时前</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="card-img">
+                        <span class="card-category">商战</span>
+                        <img src="https://picsum.photos/seed/business/400/300" alt="商战小说封面">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">商海沉浮：资本与权力的游戏</h3>
+                        <p class="card-excerpt">聚焦商业战场，揭示企业并购背后的政治博弈。当商业利益触碰到官场红线，主角将如何破局？一场关于忠诚与背叛的较量。</p>
+                        <div class="card-meta">
+                            <span>8.5万+ 阅读</span>
+                            <span>5小时前</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="card-img">
+                        <span class="card-category">情感</span>
+                        <img src="https://picsum.photos/seed/love/400/300" alt="情感小说封面">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">错位的爱情：官场情人的无奈</h3>
+                        <p class="card-excerpt">探讨在权力不对等的关系中，情感的脆弱与坚韧。两个身处不同世界的人，如何在利益与真心的天平上寻找平衡。</p>
+                        <div class="card-meta">
+                            <span>6.2万+ 阅读</span>
+                            <span>1天前</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="card-img">
+                        <span class="card-category">生存</span>
+                        <img src="https://picsum.photos/seed/survival/400/300" alt="生存指南封面">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">官场潜规则：不懂这些寸步难行</h3>
+                        <p class="card-excerpt">并非为了教唆，而是为了自保。揭秘职场中那些不成文的规定，教你如何在复杂的办公室政治中明哲保身，稳步晋升。</p>
+                        <div class="card-meta">
+                            <span>15万+ 阅读</span>
+                            <span>2天前</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Sidebar -->
+        <aside>
+            <div class="sidebar-widget">
+                <h3 class="widget-title">本周榜单</h3>
+                <ul class="ranking-list">
+                    <li>
+                        <span class="rank-num">1</span>
+                        <span class="rank-title">官道之色戒</span>
+                    </li>
+                    <li>
+                        <span class="rank-num">2</span>
+                        <span class="rank-title">极品权贵</span>
+                    </li>
+                    <li>
+                        <span class="rank-num">3</span>
+                        <span class="rank-title">商界大佬的崛起</span>
+                    </li>
+                    <li>
+                        <span class="rank-num">4</span>
+                        <span class="rank-title">锦绣官途</span>
+                    </li>
+                    <li>
+                        <span class="rank-num">5</span>
+                        <span class="rank-title">豪门恩怨录</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3 class="widget-title">热门专题</h3>
+                <div style="margin-bottom: 15px;">
+                    <a href="#" style="display:block; font-weight:bold; margin-bottom:5px;"># 权力寻租的代价</a>
+                    <p style="font-size:0.85rem; color:#666;">解析商业贿赂与官场腐败的典型案例。</p>
+                </div>
+                <div>
+                    <a href="#" style="display:block; font-weight:bold; margin-bottom:5px;"># 职场情商修炼</a>
+                    <p style="font-size:0.85rem; color:#666;">如何处理上下级关系与跨部门协作。</p>
+                </div>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3 class="widget-title">阅读排行</h3>
+                <ul class="ranking-list">
+                    <li><a href="#">职场生存法则</a></li>
+                    <li><a href="#">官场小说推荐</a></li>
+                    <li><a href="#">商业谈判技巧</a></li>
+                    <li><a href="#">办公室政治解析</a></li>
+                    <li><a href="#">高情商沟通</a></li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <div class="quote-block">
+        <p>“商场如战场，官场如棋局。在利益与情感的漩涡中，唯有清醒的头脑才能看清前路。”</p>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>关于我们</h3>
+                <p style="font-size:0.9rem; color:#bdc3c7; line-height:1.8;">
+                    情在商场爱在官场致力于提供最优质的职场情感小说阅读体验与深度行业分析。我们关注权力、利益与人性之间的复杂关系。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h3>栏目导航</h3>
+                <ul>
+                    <li><a href="#">官场小说</a></li>
+                    <li><a href="#">商战风云</a></li>
+                    <li><a href="#">职场攻略</a></li>
+                    <li><a href="#">情感咨询</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>联系方式</h3>
+                <ul>
+                    <li><a href="#">投稿指南</a></li>
+                    <li><a href="#">广告合作</a></li>
+                    <li><a href="#">版权声明</a></li>
+                    <li><a href="#">帮助中心</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 情在商场爱在官场 版权所有.
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+</html>
