@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>it狂人第一季-经典IT纪录片资源与深度解析</title>
+    <meta name="description" content="it狂人第一季高清资源分享，包含剧集介绍、角色分析、幕后花絮及观看指南。探索经典IT纪录片，了解硅谷创业文化与互联网发展史。">
+    <meta name="keywords" content="it狂人第一季, IT狂人, 英国喜剧, IT纪录片, 斯蒂芬·莫法特, 硅谷, 互联网发展">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #f5f7fa;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --border-color: #e1e4e8;
+            --accent-green: #28a745;
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            font-size: 16px;
+            color: var(--text-dark);
+        }
+
+        nav a.active {
+            color: var(--primary-color);
+        }
+
+        .search-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1f2c 0%, #2c3e50 100%);
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #0052a3;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255,255,255,0.1);
+            border-color: #fff;
+        }
+
+        /* Section Layout */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -21px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+
+        .view-all {
+            color: var(--text-gray);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Grid Layouts */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        /* Cards */
+        .card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-color: #ccc;
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #eee;
+        }
+
+        .card-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 4px 8px;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-meta {
+            font-size: 12px;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .rating {
+            color: #ffc107;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .rating span {
+            color: var(--text-gray);
+            font-weight: 400;
+            margin-left: 5px;
+        }
+
+        .card-btn {
+            font-size: 13px;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        /* Featured / Highlight */
+        .featured-card {
+            grid-column: span 2;
+            grid-row: span 2;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .featured-card:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+
+        .featured-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .featured-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .featured-desc {
+            font-size: 15px;
+            color: var(--text-gray);
+            margin-bottom: 25px;
+        }
+
+        .featured-info {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        .featured-info div {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Info Section */
+        .info-section {
+            background-color: var(--secondary-color);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .info-content h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .info-content p {
+            margin-bottom: 15px;
+            color: var(--text-gray);
+        }
+
+        .info-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--text-gray);
+        }
+
+        .check-icon {
+            color: var(--accent-green);
+            margin-top: 4px;
+        }
+
+        .info-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-dark);
+        }
+
+        .faq-question:hover {
+            color: var(--primary-color);
+        }
+
+        .faq-answer {
+            margin-top: 15px;
+            color: var(--text-gray);
+            display: none;
+            padding-left: 10px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        .faq-item:not(.active) .faq-question::after {
+            content: '+';
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1f2c;
+            color: #b0b8c4;
+            padding: 60px 0 30px;
+            font-size: 14px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .grid-4 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .featured-card {
+                grid-column: span 3;
+                grid-row: auto;
+                flex-direction: row;
+                height: 300px;
+            }
+            .featured-content {
+                width: 50%;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+            nav ul {
+                margin-top: 15px;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .grid-4, .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .featured-card {
+                flex-direction: column;
+                height: auto;
+            }
+            .featured-content {
+                width: 100%;
+            }
+            .card-img-wrapper {
+                padding-top: 133%; /* 3:4 Aspect Ratio for vertical cards on mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-4, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                <span>IT狂人第一季</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">剧集列表</a></li>
+                    <li><a href="#">幕后花絮</a></li>
+                    <li><a href="#">观看指南</a></li>
+                    <li><a href="#">角色解析</a></li>
+                </ul>
+            </nav>
+            <button class="search-btn" aria-label="搜索">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-tags">
+                    <span class="tag">经典重温</span>
+                    <span class="tag">英国喜剧</span>
+                    <span class="tag">IT文化</span>
+                    <span class="tag">豆瓣高分</span>
+                </div>
+                <h1>重温《IT狂人第一季》</h1>
+                <p>一部诞生于2006年的英国经典IT喜剧。透过程序员Roy和Moss的视角，透视硅谷创业公司的荒诞日常与互联网泡沫时代的缩影。</p>
+                <div class="cta-group">
+                    <a href="#episodes" class="btn btn-primary">观看第一季全集</a>
+                    <a href="#intro" class="btn btn-outline">了解剧集背景</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Highlight -->
+        <section class="container">
+            <div class="grid-4">
+                <article class="card featured-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://picsum.photos/seed/itcrowd1/800/600" alt="IT狂人第一季海报" class="card-img">
+                        <span class="card-badge">年度必看</span>
+                    </div>
+                    <div class="featured-content">
+                        <h2 class="featured-title">从Glenton Park到Reception</h2>
+                        <p class="featured-desc">第一季不仅奠定了整部剧的基调：冷幽默、技术宅的浪漫与职场政治的荒诞。Roy和Moss在Glenton Park IT部门的“失业”时光，是无数程序员的共鸣。</p>
+                        <div class="featured-info">
+                            <div>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                <span>6集单集剧</span>
+                            </div>
+                            <div>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <span>9.3分</span>
+                            </div>
+                            <div>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                <span>英国</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary">开始观看</a>
+                    </div>
+                </article>
+                
+                <article class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://picsum.photos/seed/itcrowd2/400/300" alt="Roy Trenneman" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Roy Trenneman</h3>
+                        <p class="card-desc">自负、傲慢但才华横溢的IT专家，精通各类语言，却对社交礼仪一窍不通。</p>
+                        <div class="card-footer">
+                            <span class="rating">9.2 <span>演技</span></span>
+                            <a href="#" class="card-btn">查看详情 &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://picsum.photos/seed/itcrowd3/400/300" alt="Moss" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Maurice Moss</h3>
+                        <p class="card-desc">拥有惊人智商的IT天才，对服务器、网络协议如数家珍，是典型的技术宅。</p>
+                        <div class="card-footer">
+                            <span class="rating">9.5 <span>智商</span></span>
+                            <a href="#" class="card-btn">查看详情 &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://picsum.photos/seed/itcrowd4/400/300" alt="Jen Barber" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Jen Barber</h3>
+                        <p class="card-desc">毫无IT背景的部门经理，凭借三寸不烂之舌和运气入职，成为三人组的粘合剂。</p>
+                        <div class="card-footer">
+                            <span class="rating">8.8 <span>情商</span></span>
+                            <a href="#" class="card-btn">查看详情 &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Episodes List -->
+        <section class="info-section" id="episodes">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">第一季剧集列表</h2>
+                    <a href="#" class="view-all">查看全部 6 集 &rarr;</a>
+                </div>
+                <div class="grid-3">
+                    <article class="card">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span>第1集</span>
+                                <span>2006年2月24日</span>
+                            </div>
+                            <h3 class="card-title">The Work Outing</h3>
+                            <p class="card-desc">Jen去参加前男友的婚礼，Roy和Moss在办公室里百无聊赖，试图用各种奇怪的方式打发时间。</p>
+                            <div class="card-footer">
+                                <a href="#" class="card-btn">播放第1集</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span>第2集</span>
+                                <span>2006年3月3日</span>
+                            </div>
+                            <h3 class="card-title">The Return</h3>
+                            <p class="card-desc">Roy和Moss回到Glenton Park，却发现公司已经关闭，他们不得不去寻找新的工作机会。</p>
+                            <div class="card-footer">
+                                <a href="#" class="card-btn">播放第2集</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span>第3集</span>
+                                <span>2006年3月10日</span>
+                            </div>
+                            <h3 class="card-title">The Haunting of Bill Crouse</h3>
+                            <p class="card-desc">新公司里出现了一个幽灵般的程序员Bill Crouse，Roy和Moss开始怀疑他的存在。</p>
+                            <div class="card-footer">
+                                <a href="#" class="card-btn">播放第3集</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intro Section -->
+        <section class="container" id="intro">
+            <div class="info-grid">
+                <div class="info-content">
+                    <h2>关于《IT狂人》第一季</h2>
+                    <p>《IT狂人》由斯蒂芬·莫法特和加里·莱夫金创作，是BBC最受欢迎的情景喜剧之一。第一季不仅展示了IT行业的日常，更通过夸张的喜剧手法探讨了现代职场的人际关系与技术宅的孤独。</p>
+                    <p>第一季的每一集都独立成篇，讲述了Roy、Moss和Jen在IT公司中的荒诞经历。从参加婚礼到寻找新工作，从应对难缠的客户到面对幽灵同事，他们的故事充满了英式冷幽默。</p>
+                    <ul class="info-list">
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>全季6集，每集25分钟</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>豆瓣评分9.3分，口碑经典</span>
+                        </li>
+                        <li>
+                            <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>深度还原90年代IT办公室文化</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="info-image">
+                    <img src="https://picsum.photos/seed/itcrowdoffice/600/400" alt="IT狂人办公室场景">
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="container" id="faq">
+            <div class="section-header">
+                <h2 class="section-title">常见问题</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">在哪里可以观看《IT狂人》第一季？</div>
+                    <div class="faq-answer">本站提供正版剧集资源链接及观看指南，建议支持正版流媒体平台。第一季通常包含6集内容。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">第一季和后续季数有什么区别？</div>
+                    <div class="faq-answer">第一季是整个系列的起点，确立了三位主角的关系和基调。后续季数剧情会有所推进，但核心幽默风格保持一致。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">这部剧适合什么人群观看？</div>
+                    <div class="faq-answer">适合所有喜欢情景喜剧、科技文化、职场讽刺以及英国文化的观众。程序员群体会有极强的共鸣。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Roy和Moss是谁？</div>
+                    <div class="faq-answer">Roy Trenneman和Maurice Moss是该剧的两大男主角，分别是IT技术部门和系统支持部门的员工，性格迥异但配合默契。</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>IT狂人第一季</h3>
+                    <p>致力于分享经典英剧资源与深度解析，让更多人了解IT文化背后的幽默与温情。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">剧集列表</a></li>
+                        <li><a href="#">角色介绍</a></li>
+                        <li><a href="#">幕后花絮</a></li>
+                        <li><a href="#">观看指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>相关推荐</h4>
+                    <ul>
+                        <li><a href="#">IT狂人第二季</a></li>
+                        <li><a href="#">硅谷电视剧</a></li>
+                        <li><a href="#">英式幽默推荐</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">网站地图</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 IT狂人第一季资源站. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Accordion Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+                              </html>
