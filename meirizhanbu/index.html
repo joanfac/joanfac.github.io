@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="每日占卜网提供塔罗牌运势、星座运势、生肖运程及心理测试服务。今日运势如何？点击开始今日占卜，探索您的命运走向。">
+    <meta name="keywords" content="每日占卜,塔罗牌,星座运势,今日运势,心理测试,塔罗牌解读">
+    <title>每日占卜-今日塔罗牌运势与星座运程查询</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #6a1b9a;
+            --primary-light: #9c4dcc;
+            --accent-color: #ffca28;
+            --text-dark: #2c3e50;
+            --text-gray: #546e7a;
+            --bg-body: #f8f9fa;
+            --bg-card: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 24px rgba(106, 27, 154, 0.12);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 15px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-sm {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(160deg, #4a148c 0%, #7b1fa2 50%, #ab47bc 100%);
+            color: white;
+            padding: 80px 0 60px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* Daily Card Section */
+        .daily-card-section {
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .daily-card-container {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .card-visual {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 40px;
+        }
+
+        .card-visual::after {
+            content: '✨';
+            font-size: 5rem;
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .tarot-card {
+            width: 180px;
+            height: 320px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #fff;
+            position: relative;
+            transform: rotate(-5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .tarot-card:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .card-img-placeholder {
+            width: 100%;
+            height: 180px;
+            background: #eee;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .card-img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .card-meaning {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        .card-actions {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .current-date {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(106, 27, 154, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(106, 27, 154, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: var(--text-gray);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #f3e5f5;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+        }
+
+        .feature-item h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-item p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Horoscope Section */
+        .horoscope-section {
+            background: white;
+            padding: 60px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .horoscope-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .zodiac-item {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .zodiac-item:hover {
+            border-color: var(--primary-color);
+            background: #fff;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .zodiac-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .zodiac-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 60px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            margin-bottom: 15px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 20px;
+            color: var(--text-gray);
+        }
+
+        .faq-item.active .faq-answer {
+            padding-bottom: 20px;
+            max-height: 200px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: #bdc3c7;
+            padding: 40px 0 20px;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .daily-card-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .card-visual {
+                padding: 30px 20px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <div class="logo">
+            <div class="logo-icon">✦</div>
+            每日占卜
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">今日运势</a></li>
+                <li><a href="#">塔罗牌阵</a></li>
+                <li><a href="#">心理测试</a></li>
+                <li><a href="#">星座百科</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button class="btn-sm btn-outline">登录</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>探索今日命运的指引</h1>
+            <p>每一次占卜都是一次自我对话的机会。通过塔罗牌的意象与星座的轨迹，为您揭示潜藏的可能性。</p>
+        </div>
+    </section>
+
+    <!-- Daily Tarot Card Section -->
+    <section class="container daily-card-section">
+        <div class="daily-card-container">
+            <div class="card-visual">
+                <div class="tarot-card">
+                    <div class="card-img-placeholder">
+                        <img src="https://picsum.photos/seed/tarot1/200/300" alt="命运之轮">
+                    </div>
+                    <div class="card-title">命运之轮</div>
+                    <div class="card-meaning">改变与循环</div>
+                </div>
+            </div>
+            <div class="card-actions">
+                <span class="current-date" id="currentDate">加载日期中...</span>
+                <h2 style="font-size: 1.5rem; margin-bottom: 10px;">今日塔罗指引</h2>
+                <p style="color: var(--text-gray); margin-bottom: 25px; font-size: 0.95rem;">
+                    命运之轮象征着转折点与新的开始。今天可能会遇到意想不到的好运，或者是一个改变生活轨迹的机会。保持开放的心态，顺应变化。
+                </p>
+                <button class="btn-primary" onclick="refreshCard()">重新抽牌</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="container features">
+        <div class="section-header">
+            <h2>探索更多运势服务</h2>
+            <p>从神秘学工具到心理洞察，全方位解读您的内心世界</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="feature-icon">🔮</div>
+                <h3>塔罗牌占卜</h3>
+                <p>经典的78张牌阵，针对爱情、事业、财运提供深度解读与建议。</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">♌</div>
+                <h3>星座运势</h3>
+                <p>每日、每周及每月运势分析，了解您的幸运色、吉时与注意事项。</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">❤️</div>
+                <h3>爱情测试</h3>
+                <p>通过心理投射与占星学原理，测试你们的关系契合度与未来走向。</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🧠</div>
+                <h3>心理测试</h3>
+                <p>科学的心理学问卷，帮助您了解性格特质、职业倾向及潜在恐惧。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zodiac Section -->
+    <section class="horoscope-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>查看您的星座运势</h2>
+                <p>输入您的出生日期，获取专属的每日星象分析</p>
+            </div>
+            <div class="horoscope-grid">
+                <div class="zodiac-item" onclick="alert('请输入具体日期')">
+                    <span class="zodiac-icon">♈</span>
+                    <div class="zodiac-name">白羊座</div>
+                </div>
+                <div class="zodiac-item" onclick="alert('请输入具体日期')">
+                    <span class="zodiac-icon">♉</span>
+                    <div class="zodiac-name">金牛座</div>
+                </div>
+                <div class="zodiac-item" onclick="alert('请输入具体日期')">
+                    <span class="zodiac-icon">♊</span>
+                    <div class="zodiac-name">双子座</div>
+                </div>
+                <div class="zodiac-item" onclick="alert('请输入具体日期')">
+                    <span class="zodiac-icon">♋</span>
+                    <div class="zodiac-name">巨蟹座</div>
+                </div>
+                <div class="zodiac-item" onclick="alert('请输入具体日期')">
+                    <span class="zodiac-icon">♌</span>
+                    <div class="zodiac-name">狮子座</div>
+                </div>
+                <div class="zodiac-item" onclick="alert('请输入具体日期')">
+                    <span class="zodiac-icon">♍</span>
+                    <div class="zodiac-name">处女座</div>
+                </div>
+                <div class="zodiac-item" onclick="alert('请输入具体日期')">
+                    <span class="zodiac-icon">♎</span>
+                    <div class="zodiac-name">天秤座</div>
+                </div>
+                <div class="zodiac-item" onclick="alert('请输入具体日期')">
+                    <span class="zodiac-icon">♏</span>
+                    <div class="zodiac-name">天蝎座</div>
+                </div>
+                <div class="zodiac-item" onclick="alert('请输入具体日期')">
+                    <span class="zodiac-icon">♐</span>
+                    <div class="zodiac-name">射手座</div>
+                </div>
+                <div class="zodiac-item" onclick="alert('请输入具体日期')">
+                    <span class="zodiac-icon">♑</span>
+                    <div class="zodiac-name">摩羯座</div>
+                </div>
+                <div class="zodiac-item" onclick="alert('请输入具体日期')">
+                    <span class="zodiac-icon">♒</span>
+                    <div class="zodiac-name">水瓶座</div>
+                </div>
+                <div class="zodiac-item" onclick="alert('请输入具体日期')">
+                    <span class="zodiac-icon">♓</span>
+                    <div class="zodiac-name">双鱼座</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container faq-section">
+        <div class="section-header">
+            <h2>常见问题</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">每日占卜的准确性如何？</div>
+                <div class="faq-answer">
+                    每日占卜主要基于心理学投射效应和星象周期。它不是绝对的预言，而是为您提供一个反思现状、调整心态的视角。结果仅供参考，生活的主导权始终在您手中。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">塔罗牌占卜需要特定的准备吗？</div>
+                <div class="faq-answer">
+                    不需要特殊的准备。找一个安静的时刻，专注于您想要询问的问题，然后点击抽牌即可。保持开放和诚实的态度有助于获得更清晰的解读。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">为什么不同网站给出的运势不同？</div>
+                <div class="faq-answer">
+                    不同的占星系统和塔罗流派有不同的算法和侧重点。我们的占卜基于经典牌义和十二星座特性，结合当日行星位置进行综合分析。
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>关于每日占卜</h4>
+                <p>我们致力于提供专业、有趣的占卜服务，帮助用户在快节奏的生活中寻找内心的平静与方向。</p>
+            </div>
+            <div class="footer-col">
+                <h4>服务栏目</h4>
+                <ul>
+                    <li><a href="#">塔罗牌阵</a></li>
+                    <li><a href="#">星座运势</a></li>
+                    <li><a href="#">心理测试</a></li>
+                    <li><a href="#">幸运色查询</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系我们</h4>
+                <ul>
+                    <li><a href="#">用户反馈</a></li>
+                    <li><a href="#">合作推广</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 每日占卜网 版权所有</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // 设置当前日期
+    document.addEventListener('DOMContentLoaded', function() {
+        const dateElement = document.getElementById('currentDate');
+        const now = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+        dateElement.textContent = now.toLocaleDateString('zh-CN', options);
+    });
+
+    // 刷新塔罗牌功能（模拟）
+    function refreshCard() {
+        const card = document.querySelector('.tarot-card');
+        const cardTitle = document.querySelector('.card-title');
+        const cardMeaning = document.querySelector('.card-meaning');
+        const img = document.querySelector('.card-img-placeholder img');
+        
+        // 模拟加载效果
+        card.style.opacity = '0.5';
+        
+        setTimeout(() => {
+            const cards = [
+                { title: '命运之轮', meaning: '改变与循环', seed: 'wheel' },
+                { title: '愚人', meaning: '新的开始', seed: 'fool' },
+                { title: '魔术师', meaning: '创造力与行动', seed: 'magician' },
+                { title: '女祭司', meaning: '直觉与智慧', seed: 'priestess' },
+                { title: '皇后', meaning: '丰饶与母性', seed: 'empress' }
+            ];
+            
+            const randomCard = cards[Math.floor(Math.random() * cards.length)];
+            
+            cardTitle.textContent = randomCard.title;
+            cardMeaning.textContent = randomCard.meaning;
+            // 使用随机种子更新图片
+            img.src = `https://picsum.photos/seed/${randomCard.seed}/200/300`;
+            
+            card.style.opacity = '1';
+        }, 300);
+    }
+
+    // FAQ 折叠功能
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        item.querySelector('.faq-question').addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            // 关闭所有
+            faqItems.forEach(i => i.classList.remove('active'));
+            // 如果之前没打开，则打开当前
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
